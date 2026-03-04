@@ -1,0 +1,56 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Yappers - A Safe Place to Be Heard - Security Rules
+
+    // 1. Stories Collection
+    // Anyone can submit a story anonymously. 
+    // NO ONE (except project admins via the Firebase Console) can read or modify stories once submitted.
+    match /stories/{storyId} {
+      allow create: if true;
+      allow read, update, delete: if false;
+    }
+
+    // 2. Chat Rooms Collection
+    match /chat_rooms/{roomId} {
+      
+      // Anyone signed in anonymously can create a room request
+      allow create: if request.auth != null;
+      
+      // A user can only read their OWN room. 
+      // Admins (listeners) will bypass these rules using the Firebase Admin SDK in a Node.js backend, 
+      // or if using client-side admin, we check if they are the assigned listener.
+      allow read: if request.auth != null && (
+        resource.data.userId == request.auth.uid || 
+        resource.data.listenerId == request.auth.uid
+      );
+
+      // Only the listener or the room owner can update it (e.g., closing the session)
+      allow update: if request.auth != null && (
+        resource.data.userId == request.auth.uid || 
+        resource.data.listenerId == request.auth.uid
+      );
+
+      allow delete: if false;
+
+      // 3. Messages Subcollection (Inside a specific Chat Room)
+      match /messages/{messageId} {
+        
+        // Users can only read/write messages in a room they own, or a room they are listening to.
+        // We use the parent room's data (get) to verify authorization.
+        allow read, write: if request.auth != null && (
+          get(/databases/$(database)/documents/chat_rooms/$(roomId)).data.userId == request.auth.uid ||
+          get(/databases/$(database)/documents/chat_rooms/$(roomId)).data.listenerId == request.auth.uid
+        );
+      }
+    }
+    
+    // 3. Legacy session_requests (from before the chat pivot)
+    // Similar to stories, anyone can submit, nobody can read.
+    match /session_requests/{requestId} {
+      allow create: if true;
+      allow read, update, delete: if false;
+    }
+  }
+}

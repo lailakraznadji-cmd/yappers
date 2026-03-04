@@ -1,0 +1,19 @@
+﻿--- Running npm install Tailwind ---
+
+added 10 packages, changed 1 package, and audited 118 packages in 9s
+
+11 packages are looking for funding
+  run `npm fund` for details
+
+11 vulnerabilities (10 moderate, 1 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+--- End ---
+Log saved to .\_output\install_tailwind_log.txt

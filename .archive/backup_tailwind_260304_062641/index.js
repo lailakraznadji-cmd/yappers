@@ -1,0 +1,10 @@
+import HeaderFooter from "../component/HeaderFooter";
+export default function Home() {
+    return (
+        <HeaderFooter>
+            <h1>Welcome to Yappers</h1>
+            <button>Submit Your Story</button>
+            <button>Request a Session</button>
+        </HeaderFooter>
+    );
+}

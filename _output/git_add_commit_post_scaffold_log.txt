@@ -1,0 +1,57 @@
+﻿--- Running Git Add ---
+
+--- Running Git Commit ---
+[master 9a7c281] Scaffold missing Node environment and React page components
+ 51 files changed, 2484 insertions(+), 1 deletion(-)
+ create mode 100644 .archive/backup_260304_060732/index.js
+ create mode 100644 .archive/backup_260304_060732/package.json
+ create mode 100644 .archive/backup_260304_060732/requestSession.js
+ create mode 100644 .archive/backup_260304_060732/submitStory.js
+ create mode 100644 .archive/backup_pages_260304_061929/admin.js
+ create mode 100644 .archive/backup_pages_260304_061929/requestSession.js
+ create mode 100644 .archive/backup_pages_260304_061929/safety.js
+ create mode 100644 .archive/backup_pages_260304_061929/submitStory.js
+ create mode 100644 _explore_import_errors_260304_0615.ps1
+ create mode 100644 _explore_search_dependencies_260304_0611.ps1
+ create mode 100644 _explore_status_260304_0605.ps1
+ create mode 100644 _explore_status_260304_0607.ps1
+ create mode 100644 _explore_status_260304_0607_fix.ps1
+ create mode 100644 _explore_status_dependencies_260304_0609.ps1
+ create mode 100644 _output/backup_log.txt
+ create mode 100644 _output/backup_pages_log.txt
+ create mode 100644 _output/fix_bom_log.txt
+ create mode 100644 _output/git_add_commit_log_2.txt
+ create mode 100644 _output/npm_build_log.txt
+ create mode 100644 _output/npm_install_log.txt
+ create mode 100644 _output/project_status_dependencies_260304_0609.txt
+ create mode 100644 _output/project_status_imports_260304_0611.txt
+ create mode 100644 _output/project_status_imports_detailed_260304_0615.txt
+ create mode 100644 _output/project_status_index_preview_260304_0609.txt
+ create mode 100644 _output/project_status_log_260304_0605.txt
+ create mode 100644 _output/project_status_log_260304_0607.txt
+ create mode 100644 _output/project_status_log_260304_0607_fix.txt
+ create mode 100644 _output/project_status_submitStory_preview_260304_0611.txt
+ create mode 100644 _output/scaffold_pages_log.txt
+ create mode 100644 _output/write_package_json_log.txt
+ create mode 100644 _output/write_package_json_nobom_log.txt
+ create mode 100644 _utils/_temp_package_json_encoding_260304.py
+ create mode 100644 _utils/backup_260304_0607.ps1
+ create mode 100644 _utils/backup_pages_260304_0615.ps1
+ create mode 100644 _utils/fix_json_bom_260304_0625.ps1
+ create mode 100644 _utils/git_add_commit_260304_0633.ps1
+ create mode 100644 _utils/npm_build_260304_0621.ps1
+ create mode 100644 _utils/npm_install_260304_0615.ps1
+ create mode 100644 _utils/scaffold_pages_260304_0620.ps1
+ create mode 100644 _utils/scaffold_pages_260304_0622.ps1
+ create mode 100644 _utils/scaffold_pages_260304_0624.ps1
+ create mode 100644 _utils/scaffold_pages_hardcoded_260304_0625.ps1
+ create mode 100644 _utils/write_package_json_260304_0607.ps1
+ create mode 100644 _utils/write_package_json_nobom_260304_0630.ps1
+ create mode 100644 package-lock.json
+
+--- Git Status After Commit ---
+On branch master
+nothing to commit, working tree clean
+
+--- End ---
+Log saved to .\_output\git_add_commit_post_scaffold_log.txt

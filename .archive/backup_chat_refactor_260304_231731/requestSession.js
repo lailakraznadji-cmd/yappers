@@ -1,55 +1,44 @@
 ﻿import { useState } from 'react';
 import HeaderFooter from '../component/HeaderFooter';
-import { auth, db } from '../firebase/firebaseConfig';
-import { signInAnonymously } from 'firebase/auth';
+import { db } from '../firebase/firebaseConfig';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { useRouter } from 'next/router';
 
 export default function RequestSession() {
     const [topic, setTopic] = useState('');
-    const [initialMessage, setInitialMessage] = useState('');
+    const [contactMethod, setContactMethod] = useState('');
+    const [availability, setAvailability] = useState('');
     const [submitting, setSubmitting] = useState(false);
+    const [message, setMessage] = useState('');
     const [error, setError] = useState('');
-    const router = useRouter();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setMessage('');
         setError('');
 
-        if (!topic || !initialMessage) {
-            setError('Please select a topic and write an initial message.');
+        if (!topic || !contactMethod || !availability) {
+            setError('Please fill out all fields so we can best assist you.');
             return;
         }
 
         setSubmitting(true);
         try {
-            // 1. Silent Anonymous Login
-            const userCredential = await signInAnonymously(auth);
-            const user = userCredential.user;
-
-            // 2. Create the Chat Room
-            const roomRef = await addDoc(collection(db, 'chat_rooms'), {
+            await addDoc(collection(db, 'session_requests'), {
                 topic,
-                userId: user.uid,
-                status: 'waiting',
-                createdAt: serverTimestamp(),
-            });
-
-            // 3. Add the initial message to the room's subcollection
-            await addDoc(collection(db, 'chat_rooms', roomRef.id, 'messages'), {
-                text: initialMessage,
-                sender: 'user',
-                userId: user.uid,
+                contactMethod,
+                availability,
                 timestamp: serverTimestamp(),
+                status: 'pending' // Simple default status
             });
-
-            // 4. Redirect into the new secure chat room
-            router.push(`/chat/${roomRef.id}`);
-
+            setMessage('Your request has been securely submitted. A listener will reach out to you via your preferred contact method shortly.');
+            setTopic('');
+            setContactMethod('');
+            setAvailability('');
         } catch (err) {
-            console.error("Error creating chat session: ", err);
-            setError('An error occurred while connecting. Please try again later.');
-            setSubmitting(false); // Only set to false on error, success redirects away
+            console.error("Error submitting session request: ", err);
+            setError('An error occurred while submitting your request. Please try again later.');
+        } finally {
+            setSubmitting(false);
         }
     };
 
@@ -57,11 +46,16 @@ export default function RequestSession() {
         <HeaderFooter>
             <div className="container mx-auto px-4 py-12 max-w-3xl">
                 <div className="bg-yappersCream rounded-3xl shadow-lg p-8 sm:p-12">
-                    <h1 className="text-4xl font-extrabold text-[#7D5A9C] mb-4 text-center">Start a Chat Session</h1>
+                    <h1 className="text-4xl font-extrabold text-[#7D5A9C] mb-4 text-center">Request a Session</h1>
                     <p className="text-gray-700 text-lg mb-8 text-center">
-                        Need someone to talk to right now? Start a secure, anonymous chat with a listener.
+                        Need someone to talk to? Fill out the form below to connect with a listener in a safe, non-judgmental space.
                     </p>
 
+                    {message && (
+                        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-xl mb-6 shadow-sm" role="alert">
+                            <span className="block sm:inline">{message}</span>
+                        </div>
+                    )}
                     {error && (
                         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl mb-6 shadow-sm" role="alert">
                             <span className="block sm:inline">{error}</span>
@@ -90,16 +84,31 @@ export default function RequestSession() {
                         </div>
 
                         <div>
-                            <label htmlFor="initialMessage" className="block text-gray-800 font-semibold mb-2">
-                                Your First Message
+                            <label htmlFor="contactMethod" className="block text-gray-800 font-semibold mb-2">
+                                Preferred Contact Method
+                            </label>
+                            <input
+                                type="text"
+                                id="contactMethod"
+                                className="w-full px-4 py-3 text-gray-700 bg-white border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-yappersLightBlue focus:border-transparent transition-all shadow-sm"
+                                placeholder="e.g., Discord (Username#1234), Email (you@example.com)"
+                                value={contactMethod}
+                                onChange={(e) => setContactMethod(e.target.value)}
+                                disabled={submitting}
+                            />
+                        </div>
+
+                        <div>
+                            <label htmlFor="availability" className="block text-gray-800 font-semibold mb-2">
+                                Availability / Preferred Times
                             </label>
                             <textarea
-                                id="initialMessage"
+                                id="availability"
                                 rows="4"
                                 className="w-full px-4 py-3 text-gray-700 bg-white border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-yappersLightBlue focus:border-transparent transition-all shadow-sm resize-y"
-                                placeholder="Start typing here... (What's on your mind?)"
-                                value={initialMessage}
-                                onChange={(e) => setInitialMessage(e.target.value)}
+                                placeholder="Let us know when you are generally available (include your timezone)."
+                                value={availability}
+                                onChange={(e) => setAvailability(e.target.value)}
                                 disabled={submitting}
                             />
                         </div>
@@ -107,13 +116,13 @@ export default function RequestSession() {
                         <div className="pt-4 text-center">
                             <button
                                 type="submit"
-                                disabled={submitting || !topic || !initialMessage}
-                                className={`w-full sm:w-auto px-8 py-4 font-bold text-gray-800 rounded-2xl shadow-sm transition-all duration-200 ${submitting || !topic || !initialMessage
+                                disabled={submitting || !topic || !contactMethod || !availability}
+                                className={`w-full sm:w-auto px-8 py-4 font-bold text-gray-800 rounded-2xl shadow-sm transition-all duration-200 ${submitting || !topic || !contactMethod || !availability
                                         ? 'bg-gray-300 cursor-not-allowed text-gray-500'
                                         : 'bg-yappersLightBlue hover:bg-[#86c8e6] transform hover:-translate-y-1'
                                     }`}
                             >
-                                {submitting ? 'Connecting...' : 'Start Chat'}
+                                {submitting ? 'Requesting...' : 'Request Listening Session'}
                             </button>
                         </div>
                     </form>

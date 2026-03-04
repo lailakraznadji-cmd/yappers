@@ -1,0 +1,29 @@
+﻿--- Git Status Before Commit ---
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	_output/git_commit_log.txt
+	_utils/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+--- Running Git Commit ---
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	_output/git_commit_log.txt
+	_utils/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+--- Git Status After Commit ---
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	_output/git_commit_log.txt
+	_utils/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+--- End ---
+Log saved to .\_output\git_commit_log.txt

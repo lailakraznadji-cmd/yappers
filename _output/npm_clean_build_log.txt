@@ -1,4 +1,7 @@
-﻿--- Running npm run build ---
+﻿--- Removing .next cache ---
+Successfully removed .next directory
+
+--- Running npm run build ---
 
 > yappers@0.1.0 build
 > next build
@@ -19,13 +22,13 @@
    Collecting build traces ...
 
 Route (pages)                             Size     First Load JS
-Ôöî Ôùï / (653 ms)                            3.09 kB          83 kB
+Ôöî Ôùï / (306 ms)                            3.09 kB          83 kB
 Ôö£   /_app                                 0 B            79.9 kB
 Ôö£ Ôùï /404                                  180 B          80.1 kB
-Ôö£ Ôùï /admin (690 ms)                       449 B          80.4 kB
-Ôö£ Ôùï /requestSession (719 ms)              451 B          80.4 kB
-Ôö£ Ôùï /safety (543 ms)                      449 B          80.4 kB
-Ôöö Ôùï /submitStory (489 ms)                 450 B          80.4 kB
+Ôö£ Ôùï /admin                                449 B          80.4 kB
+Ôö£ Ôùï /requestSession (402 ms)              451 B          80.4 kB
+Ôö£ Ôùï /safety                               449 B          80.4 kB
+Ôöö Ôùï /submitStory (415 ms)                 450 B          80.4 kB
 + First Load JS shared by all             82.2 kB
   Ôö£ chunks/framework-64ad27b21261a9ce.js  44.8 kB
   Ôö£ chunks/main-fc56ac81e639fb5e.js       34 kB
@@ -35,4 +38,4 @@ Route (pages)                             Size     First Load JS
 
 
 --- End ---
-Log saved to .\_output\npm_build_log.txt
+Log saved to .\_output\npm_clean_build_log.txt

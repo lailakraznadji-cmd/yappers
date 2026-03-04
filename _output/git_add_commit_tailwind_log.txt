@@ -1,0 +1,24 @@
+﻿--- Running Git Add ---
+
+--- Running Git Commit ---
+[master 2615116] Initialize Tailwind CSS and update Homepage routing
+ 15 files changed, 452 insertions(+), 12 deletions(-)
+ create mode 100644 .archive/backup_tailwind_260304_062641/index.js
+ create mode 100644 .archive/backup_tailwind_260304_062641/package.json
+ create mode 100644 _output/backup_tailwind_log.txt
+ create mode 100644 _output/git_add_commit_post_scaffold_log.txt
+ create mode 100644 _output/install_tailwind_log.txt
+ create mode 100644 _utils/backup_tailwind_260304_0626.ps1
+ create mode 100644 _utils/git_add_commit_tailwind_260304_0630.ps1
+ create mode 100644 _utils/install_tailwind_260304_0628.ps1
+ create mode 100644 postcss.config.js
+ create mode 100644 src/pages/_app.js
+ create mode 100644 src/styles/globals.css
+ create mode 100644 tailwind.config.js
+
+--- Git Status After Commit ---
+On branch master
+nothing to commit, working tree clean
+
+--- End ---
+Log saved to .\_output\git_add_commit_tailwind_log.txt

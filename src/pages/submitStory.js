@@ -15,8 +15,8 @@ export default function SubmitYourStory() {
         setMessage('');
         setError('');
 
-        if (story.length < 50) {
-            setError('Please write at least 50 characters to share your story meaningfully.');
+        if (story.length < 10) {
+            setError('Please write at least 10 characters to share your story meaningfully.');
             return;
         }
         if (!consent) {
@@ -70,13 +70,13 @@ export default function SubmitYourStory() {
                                 id="story"
                                 rows="8"
                                 className="w-full px-4 py-3 text-gray-700 bg-white border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-yappersLightBlue focus:border-transparent transition-all shadow-sm resize-y"
-                                placeholder="Start writing here... (minimum 50 characters)"
+                                placeholder="Start writing here... (minimum 10 characters)"
                                 value={story}
                                 onChange={(e) => setStory(e.target.value)}
                                 disabled={submitting}
                             />
                             <p className="text-sm text-gray-500 mt-2 text-right">
-                                {story.length} / 50 characters minimum
+                                {story.length} / 10 characters minimum
                             </p>
                         </div>
 
@@ -99,10 +99,10 @@ export default function SubmitYourStory() {
                         <div className="pt-4 text-center">
                             <button
                                 type="submit"
-                                disabled={submitting || story.length < 50 || !consent}
-                                className={`w-full sm:w-auto px-8 py-4 font-bold text-gray-800 rounded-2xl shadow-sm transition-all duration-200 ${submitting || story.length < 50 || !consent
-                                        ? 'bg-gray-300 cursor-not-allowed text-gray-500'
-                                        : 'bg-yappersLightBlue hover:bg-[#86c8e6] transform hover:-translate-y-1'
+                                disabled={submitting || story.length < 10 || !consent}
+                                className={`w-full sm:w-auto px-8 py-4 font-bold text-gray-800 rounded-2xl shadow-sm transition-all duration-200 ${submitting || story.length < 10 || !consent
+                                    ? 'bg-gray-300 cursor-not-allowed text-gray-500'
+                                    : 'bg-yappersLightBlue hover:bg-[#86c8e6] transform hover:-translate-y-1'
                                     }`}
                             >
                                 {submitting ? 'Submitting...' : 'Share My Story'}

@@ -1,0 +1,33 @@
+﻿--- Running Git Add ---
+git : warning: in the working 
+copy of 
+'_output/git_commit_log.txt', 
+LF will be replaced by CRLF 
+the next time Git touches it
+Au caractère C:\Users\HP\Deskt
+op\yappers\_utils\git_add_comm
+it_260304_0602.ps1:10 : 12
++     $add = git add . 2>&1
++            ~~~~~~~~~~~~~~
+    + CategoryInfo          : 
+    NotSpecified: (warning:   
+  in the... Git touches it:   
+ String) [], RemoteExcepti    
+on
+    + FullyQualifiedErrorId : 
+    NativeCommandError
+ 
+
+--- Running Git Commit ---
+[master 04723a5] Initial commit with config files
+ 3 files changed, 89 insertions(+)
+ create mode 100644 _output/git_commit_log.txt
+ create mode 100644 _utils/git_add_commit_260304_0602.ps1
+ create mode 100644 _utils/git_commit_init_260304_0600.ps1
+
+--- Git Status After Commit ---
+On branch master
+nothing to commit, working tree clean
+
+--- End ---
+Log saved to .\_output\git_add_commit_log.txt

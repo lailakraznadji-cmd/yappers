@@ -1,0 +1,4 @@
+﻿--- Running BOM removal ---
+
+--- End ---
+Log saved to .\_output\fix_bom_log.txt

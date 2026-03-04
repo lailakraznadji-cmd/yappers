@@ -1,0 +1,12 @@
+﻿--- Searching for broken internal imports ---
+
+src\pages\index.js:1:im
+port HeaderFooter from 
+"../components/HeaderFo
+oter";
+
+
+
+
+--- End ---
+Log saved to .\_output\project_status_imports_detailed_260304_0615.txt

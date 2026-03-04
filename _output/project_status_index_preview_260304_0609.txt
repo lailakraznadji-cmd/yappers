@@ -1,4 +1,4 @@
-import HeaderFooter from "../component/HeaderFooter";
+﻿import HeaderFooter from "../components/HeaderFooter";
 export default function Home() {
     return (
         <HeaderFooter>

@@ -1,0 +1,4 @@
+﻿Successfully wrote to .\package.json
+
+--- End ---
+Log saved to .\_output\write_package_json_log.txt

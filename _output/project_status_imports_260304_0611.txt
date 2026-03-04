@@ -1,0 +1,10 @@
+﻿--- Searching for imports in js files ---
+import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { initializeApp } from "firebase/app";
+import HeaderFooter from "../components/HeaderFooter";
+
+
+--- End ---
+Log saved to .\_output\project_status_imports_260304_0611.txt

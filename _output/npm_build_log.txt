@@ -1,0 +1,37 @@
+﻿--- Running npm run build ---
+
+> yappers@0.1.0 build
+> next build
+
+  Ôû▓ Next.js 14.2.35
+  - Environments: .env.local
+
+   Linting and checking validity of types ...
+   Creating an optimized production build ...
+ Ô£ô Compiled successfully
+   Collecting page data ...
+   Generating static pages (0/7) ...
+   Generating static pages (1/7) 
+   Generating static pages (3/7) 
+   Generating static pages (5/7) 
+ Ô£ô Generating static pages (7/7)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (pages)                             Size     First Load JS
+Ôöî Ôùï / (430 ms)                            385 B          80.2 kB
+Ôö£ Ôùï /404                                  180 B            80 kB
+Ôö£ Ôùï /admin (595 ms)                       449 B          80.2 kB
+Ôö£ Ôùï /requestSession (621 ms)              451 B          80.2 kB
+Ôö£ Ôùï /safety (688 ms)                      449 B          80.2 kB
+Ôöö Ôùï /submitStory (538 ms)                 450 B          80.2 kB
++ First Load JS shared by all             79.8 kB
+  Ôö£ chunks/framework-64ad27b21261a9ce.js  44.8 kB
+  Ôö£ chunks/main-fc56ac81e639fb5e.js       34 kB
+  Ôöö other shared chunks (total)           906 B
+
+Ôùï  (Static)  prerendered as static content
+
+
+--- End ---
+Log saved to .\_output\npm_build_log.txt

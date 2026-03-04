@@ -1,0 +1,8 @@
+﻿--- Next config content ---
+
+
+--- Node Modules check ---
+node_modules does not exist.
+
+--- End ---
+Log saved to .\_output\project_status_dependencies_260304_0609.txt
